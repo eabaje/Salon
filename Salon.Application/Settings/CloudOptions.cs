@@ -1,0 +1,11 @@
+﻿namespace Salon.Application.Settings
+{
+    public class CloudOptions
+    {
+        public string StorageConnectionString { get; set; }
+
+        public string ExceptionQueue { get; set; }
+
+        public string ExceptionFunctionUrl { get; set; }
+    }
+}
