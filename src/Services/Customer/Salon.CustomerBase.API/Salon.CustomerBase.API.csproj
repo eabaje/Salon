@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
+  </PropertyGroup>
+ <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Dapper" Version="1.60.6" />
+    <PackageReference Include="FluentValidation" Version="8.4.0" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
+   <PackageReference Include=" Microsoft.EntityFrameworkCore.Tools" Version="5.0.1" />
+   <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+   <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.1" />
+   <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+
+   <PackageReference Include="MassTransit" Version="7.1.5" />
+   <PackageReference Include="MassTransit.AspNetCore" Version="7.1.5" />
+   <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.5" />
+   
+   <PackageReference Include="Plain.RabbitMQ" Version="0.0.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Salon.Eventbus.RabbitMQ\Salon.Eventbus.RabbitMQ.csproj" />
+    <ProjectReference Include="..\Salon.CustomerBase.Infrastructure\Salon.CustomerBase.Infrastructure.csproj" />
+  </ItemGroup>
+  
+
+</Project>

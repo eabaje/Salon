@@ -1,0 +1,17 @@
+﻿namespace Salon.Common.Managers.Abstract
+{
+    public interface IPathManager
+    {
+        string GetCharmImagePath(string categoryUnique);
+
+        string GetProductImagesPath(string categoryUnique, string productUnique);
+
+        string GetProductPath(string categoryUnique, string productUnique);
+
+        string GetPhysicalPath(string path);
+
+        string GetEmailTemplatePath(string templateName);
+
+        string GetSlideImagesPath();
+    }
+}
