@@ -192,32 +192,7 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Implementations
         }
 
 
-        public async Task<bool> CreateCalendarItem(Calendar calendar)
-        {
-
-            if (!_setting.IsMongoDb)
-            {
-
-                _contextPostgres
-                            .Calendars
-                            .Add(calendar);
-
-                /* return*/
-                return await _contextPostgres.SaveChangesAsync() > 0;
-            }
-
-
-            try
-            {
-                await _context.Calendars.InsertOneAsync(calendar);
-
-                return true;
-            }
-            catch (Exception exc) { return false; }
-
-
-        }
-
+     
         public async Task<bool> Update(Calendar calendar)
         {
             if (!_setting.IsMongoDb)
@@ -339,36 +314,17 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Implementations
         }
 
 
-        public async Task<IEnumerable<CalendarItem>> GetCalendarItemByDate(DateTime fromDate, DateTime ToDate, string salonId = null)
-        {
-            if (!_setting.IsMongoDb)
-            {
+      
 
 
-
-                return await _contextPostgres
-                              .CalendarItems
-                              .Where(p => p.CreatedOn >= fromDate && p.CreatedOn <= ToDate && p.SalonId == salonId)
-                              .ToListAsync();
-            }
-            FilterDefinition<CalendarItem> filter = string.IsNullOrEmpty(salonId) ? Builders<CalendarItem>.Filter.Where(p => p.CreatedOn >= fromDate && p.CreatedOn <= ToDate)
-                : Builders<CalendarItem>.Filter.Where(p => p.CreatedOn >= fromDate && p.CreatedOn <= ToDate && p.SalonId == salonId);
-
-            return await _context
-                          .CalendarItems
-                          .Find(filter)
-                          .ToListAsync();
-        }
-
-
-        public async Task<bool> CreateCalendarItem(Calendar calendar)
+        public async Task<bool> CreateCalendarItem(CalendarItem calendar)
         {
 
             if (!_setting.IsMongoDb)
             {
 
                 _contextPostgres
-                            .Calendars
+                            .CalendarItems
                             .Add(calendar);
 
                 /* return*/
@@ -378,7 +334,7 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Implementations
 
             try
             {
-                await _context.Calendars.InsertOneAsync(calendar);
+                await _context.CalendarItems.InsertOneAsync(calendar);
 
                 return true;
             }
@@ -389,67 +345,7 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Implementations
 
 
 
-        public async Task<bool> UpdateCalendarItem(CalendarItem calendar)
-        {
-            if (!_setting.IsMongoDb)
-            {
-
-
-
-                _contextPostgres
-                            .CalendarItems
-                            .Update(calendar);
-
-
-
-                /* return*/
-                return await _contextPostgres.SaveChangesAsync() > 0;
-            }
-
-
-
-            var updateResult = await _context
-                                        .CalendarItems
-                                        .ReplaceOneAsync(filter: g => g.CalenderId == calendar.CalenderId, replacement: CalendarItem);
-
-            return updateResult.IsAcknowledged
-                    && updateResult.ModifiedCount > 0;
-
-
-        }
-
-
-
-
-
-        public async Task<bool> DeleteCalendarItem(string id)
-        {
-
-            if (!_setting.IsMongoDb)
-            {
-
-
-
-                var entity = _contextPostgres
-                            .CalendarItems
-                            .FirstOrDefault(t => t.CalenderId == Guid.Parse(id));
-
-                _contextPostgres.CalendarItems.Remove(entity);
-
-
-
-                /* return*/
-                return await _contextPostgres.SaveChangesAsync() > 0;
-            }
-            FilterDefinition<CalendarItem> filter = Builders<CalendarItem>.Filter.Eq(m => m.CalenderId, Guid.Parse(id));
-            DeleteResult deleteResult = await _context
-                                                .CalendarItems
-                                                .DeleteOneAsync(filter);
-
-            return deleteResult.IsAcknowledged
-                && deleteResult.DeletedCount > 0;
-        }
-
+       
 
     }
 }

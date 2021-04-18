@@ -60,15 +60,40 @@ namespace Salon.BarberShopBase.Infrastructure.Managers.Implementations
             return stringTemplate;
         }
 
-        public string PrepareActivateNewUserEmail(Customer user, string stringTemplate)
+        public string PrepareActivateNewSalonEmail(BeautySalon salon, string stringTemplate)
         {
             var url = $"{clientSettings.Url}activate";
             var today = DateTime.Today.ToString("d", CultureInfo.InvariantCulture);
             stringTemplate = stringTemplate.Replace("{{{url}}}", url);
-            stringTemplate = stringTemplate.Replace("{{{name}}}", user.FullName);
+            stringTemplate = stringTemplate.Replace("{{{name}}}", salon.SalonName);
             stringTemplate = stringTemplate.Replace("{{{today}}}", today);
             return stringTemplate;
         }
+
+        public string PrepareNewSalonBarberEmail(BeautySalon salon,Barber barber, string stringTemplate)
+        {
+            var url = $"{clientSettings.Url}activate";
+            var today = DateTime.Today.ToString("d", CultureInfo.InvariantCulture);
+            stringTemplate = stringTemplate.Replace("{{{url}}}", url);
+            stringTemplate = stringTemplate.Replace("{{{salon}}}", salon.SalonName);
+            stringTemplate = stringTemplate.Replace("{{{barber}}}", barber.BarberName);
+            stringTemplate = stringTemplate.Replace("{{{today}}}", today);
+            return stringTemplate;
+        }
+
+        public string PrepareAppointmentCancelEmail(Appointment appointment,string stringTemplate)
+        {
+            var url = $"{clientSettings.Url}activate";
+            var today = DateTime.Today.ToString("d", CultureInfo.InvariantCulture);
+            stringTemplate = stringTemplate.Replace("{{{url}}}", url);
+            stringTemplate = stringTemplate.Replace("{{{salon}}}", appointment.salon.SalonName);
+            stringTemplate = stringTemplate.Replace("{{{customer}}}", appointment.customer.FullName);
+            stringTemplate = stringTemplate.Replace("{{{today}}}", today);
+            return stringTemplate;
+        }
+
+
+       
 
         //public string PrepareResetPasswordEmail(LoginViewDTO user, string stringTemplate)
         //{
