@@ -17,9 +17,10 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Implementations
         private readonly IBeautySalonContext _context;
         private readonly PostgresDBContext _contextPostgres;
         private readonly IBarberDatabaseSettings _setting;
-        public AppointmentRepository(IBeautySalonContext AppointmentContext)
+        public AppointmentRepository(IBeautySalonContext AppointmentContext, PostgresDBContext contextPostgres)
         {
             _context = AppointmentContext ?? throw new ArgumentNullException(nameof(AppointmentContext));
+            _contextPostgres = contextPostgres ?? throw new ArgumentNullException(nameof(contextPostgres));
         }
 
         public async Task<IEnumerable<Appointment>> GetAppointment()
