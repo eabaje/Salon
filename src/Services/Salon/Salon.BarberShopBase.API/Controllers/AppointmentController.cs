@@ -131,6 +131,9 @@ namespace Salon.BarberShopBase.API.Controllers
             {
                 try
                 {
+
+
+
                     await _repository.Create(appointment);
 
             return CreatedAtRoute("GetAppointment", new { id = appointment.AppointmentId }, appointment);

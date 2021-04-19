@@ -15,9 +15,9 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Interfaces
         Task<IEnumerable<Appointment>> GetAppointmentByCustomer(string customerId);
 
         Task<IEnumerable<Appointment>> GetAppointmentByBarber(string salonId,string barberId);
-        Task<IEnumerable<Appointment>> GetAppointmentByDate(DateTime fromDate, DateTime toDate,string salonId=null);
-
-        //  Task<IEnumerable<Appointment>> GetBeautySalonByLocation(string LocationName);
+        Task<IEnumerable<Appointment>> GetAppointmentByDate(DateTime fromDate, DateTime toDate,string salonId=null);     
+        Task<IEnumerable<Appointment>> GetAppointmentByBooked(AppointmentStatus booked, string salonId = null);
+        
 
         Task<bool> Create(Appointment appointment);
         Task<bool> Update(Appointment appointment);

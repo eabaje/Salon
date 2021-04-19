@@ -20,7 +20,7 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Interfaces
         Task<bool> Delete(string id);
         Task<IEnumerable<CalendarItem>> GetCalendarItemByDate(DateTime fromDate, DateTime ToDate, string salonId = null);
         Task<IEnumerable<CalendarItem>> GetCalendarByBarber(string salonId, string barberId);
-        Task<IEnumerable<CalendarItem>> GetCalendarItemByBooked(BookedStatus booked, string salonId = null);
+       
        
         Task<bool> UpdateCalendarItem(CalendarItem calendar);
         Task<bool> DeleteCalendarItem(string id);

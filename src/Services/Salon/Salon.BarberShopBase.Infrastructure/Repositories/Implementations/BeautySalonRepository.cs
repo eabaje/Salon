@@ -111,6 +111,26 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Implementations
                           .ToListAsync();
         }
 
+        public async Task<IEnumerable<BeautySalon>> GetBeautySalonByServiceType(string ServiceTypeId)
+        {
+
+            List<BeautySalon> BeautySalonList = new List<BeautySalon>();
+           
+
+
+                return await _contextPostgres
+                              .BeautySalons
+                              .Where(p => p.ServiceTypeId == ServiceTypeId)
+                              .ToListAsync();
+          
+
+
+          
+        }
+
+     
+
+
         public async Task<IEnumerable<BeautySalon>> GetBeautySalonByDate(DateTime fromDate, DateTime ToDate)
         {
 
@@ -135,6 +155,20 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Implementations
                           .ToListAsync();
         }
 
+
+
+        public async Task<IEnumerable<BeautySalon>> GetBeautySalonLocationByServiceType(string ServiceTypeId, double Latitude, double Longitude, double radius)
+        {
+
+            List<BeautySalon> BeautySalonList = new List<BeautySalon>();
+
+            return await _contextPostgres
+                          .BeautySalons
+                          .Where(p => p.ServiceTypeId == ServiceTypeId && p.Latitude == Latitude && p.Longitude == Longitude)
+                          .ToListAsync();
+
+
+        }
 
         public async Task<IEnumerable<BeautySalon>> GetBeautySalonByNearestLocation(double Latitude,double Longitude,double radius)
         {
