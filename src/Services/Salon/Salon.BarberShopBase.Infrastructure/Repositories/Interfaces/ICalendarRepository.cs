@@ -25,5 +25,17 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Interfaces
         Task<bool> UpdateCalendarItem(CalendarItem calendar);
         Task<bool> DeleteCalendarItem(string id);
         Task<bool> CreateCalendarItem(CalendarItem calendar);
+
+
+        //Calendar Setup Interface 
+        Task<IEnumerable<CalendarSetUp>> GetCalendarSetUpByDate(DateTime fromDate, DateTime ToDate, string salonId);
+        Task<bool> IsCalendarSetUpManual(string salonId);
+      
+        Task<bool> CreateCalendarSetUp(CalendarSetUp calendar);
+        Task<bool> UpdateCalendarSetUp(CalendarSetUp calendar);
+        Task<bool> DeleteCalendarSetUp(string id);
+      
+
+
     }
 }

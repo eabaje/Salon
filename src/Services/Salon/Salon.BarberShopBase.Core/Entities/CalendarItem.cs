@@ -17,27 +17,40 @@ namespace Salon.BarberShopBase.Core.Entities
         public int CalenderItemId { get; set; }
 
         public Guid CalenderId { get; set; }
-      
-        public DateTime? WorkDate { get; set; }
+
+        public WorkDayFormat WorkDayStyle { get; set; }
+
+       
         public TimeSpan? WorkStartTime { get; set; }
 
         public int DurationInMinutes { get; set; }
 
-        public TimeSpan? workEndTime { get; set; }
-       
-        public string SalonId { get; set; }
-        public string BarberId { get; set; }
-       
-        public BookedStatus booked { get; set; }
+        public TimeSpan? WorkEndTime { get; set; }
         public string Comment { get; set; }
+       public string SalonId { get; set; }
+       public string BarberId { get; set; }
 
+
+        public string AppointmentTime
+        {
+            get
+            {
+                return WorkStartTime.Value.ToString("hh:mm tt") + "-" + WorkEndTime.Value.ToString("hh:mm tt");
+            }
+        }
 
     }
-    public enum BookedStatus
+    
+
+
+
+    public enum WorkDayFormat
     {
-        NotBooked = 1,
-        Booked = 2,
-        DontBook = 3,
-       
+        AllWeek = 1,
+        WeekDay = 2,
+        WeekEnd = 3,
+        Saturday = 4,
+        Sunday = 5,
+
     }
 }

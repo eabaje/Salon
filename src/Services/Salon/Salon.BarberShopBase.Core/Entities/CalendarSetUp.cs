@@ -5,11 +5,17 @@ using System.Text;
 
 namespace Salon.BarberShopBase.Core.Entities
 {
-   public  class CalendarSetUp
+   public  class CalendarSetUp:BaseEntity
     {
 
+        [Key]
+        public Guid CalendarSetUpId { get; set; }
+
         public string SalonId { get; set; }
-        public string BarberId { get; set; }
+        public string ServiceTypeId { get; set; }
+
+
+        public WorkDayFormat WorkDayStyle { get; set; }
 
         public bool IsManual => true;
 
@@ -29,10 +35,18 @@ namespace Salon.BarberShopBase.Core.Entities
       
         public BeautySalon salon { get; set; }
 
-        public Barber barber { get; set; }
+        public ServiceType serviceType { get; set; }
 
-      
 
+        public enum WorkDayFormat
+        {
+            AllWeek = 1,
+            WeekDay = 2,
+            WeekEnd = 3,
+            Saturday = 4,
+            Sunday = 5,
+
+        }
 
 
     }

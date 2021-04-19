@@ -18,9 +18,9 @@ namespace Salon.BarberShopBase.Infrastructure.Data
         public DbSet<Barber> Barbers { get; }
         public DbSet<Appointment> Appointments { get; }
         public DbSet<Calendar> Calendars { get; }
-
+        public DbSet<CalendarSetUp> CalendarSetUps { get; }
         public DbSet<CalendarItem> CalendarItems { get; }
-        //  public DbSet<Location> Locations { get; }
+        
         public DbSet<Category> Categorys { get; }
         public DbSet<ServiceType> ServiceTypes { get; }
         public DbSet<PriceList> PriceLists { get; }

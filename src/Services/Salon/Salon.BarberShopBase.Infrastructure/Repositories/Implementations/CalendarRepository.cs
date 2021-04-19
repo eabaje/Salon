@@ -344,8 +344,93 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Implementations
         }
 
 
+        // Create interface implemetations for the CalendarSetUp Entity
 
-       
 
+        public async Task<bool> CreateCalendarSetUp(CalendarSetUp calendar)
+        {
+
+           try
+            {
+
+                _contextPostgres
+                            .CalendarSetUps
+                            .Add(calendar);
+
+                /* return*/
+                return await _contextPostgres.SaveChangesAsync() > 0;
+            }
+
+         
+            catch (Exception exc) { return false; }
+
+
+        }
+
+
+
+        public async Task<bool> UpdateCalendarSetUp(CalendarSetUp calendar)
+        {
+
+            try
+            {
+
+                _contextPostgres
+                            .CalendarSetUps
+                            .Update(calendar);
+
+                /* return*/
+                return await _contextPostgres.SaveChangesAsync() > 0;
+            }
+
+
+            catch (Exception exc) { return false; }
+
+
+        }
+
+
+        public async Task<IEnumerable<CalendarSetUp>> GetCalendarSetUpByDate(DateTime fromDate, DateTime ToDate, string salonId)
+        {
+            try
+            {
+               
+
+                return await _contextPostgres
+                              .CalendarSetUps
+                              .Where(p => p.CreatedOn >= fromDate && p.CreatedOn <= ToDate && p.SalonId == salonId)
+                              .ToListAsync();
+            }
+            
+
+
+            catch (Exception exc) { return false; }
+        }
+
+
+        public async Task<bool> IsCalendarSetUpManual(string salonId)
+        {
+            try
+            {
+                
+
+               var rows =  await _contextPostgres
+                              .CalendarSetUps
+                              .Where(p => p.IsManual==true  && p.SalonId == salonId)
+                              .ToListAsync();
+                if(rows.Any) return true
+
+
+                    return false;
+
+            }
+
+
+
+            catch (Exception exc) { return false; }
+        }
+
+
+        /////////******    ********/////
     }
 }

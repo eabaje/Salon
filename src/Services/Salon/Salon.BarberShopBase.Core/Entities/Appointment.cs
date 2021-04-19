@@ -18,20 +18,32 @@ namespace Salon.BarberShopBase.Core.Entities
         public string BarberId { get; set; }
         public string SalonId { get; set; }
         public string CustomerId { get; set; }
-        public string CalendarId { get; set; }
+      //  public string CalendarId { get; set; }
+        public int CalenderItemId { get; set; }
         public string ServiceTypeId { get; set; }
-        public DateTime? AppointDate { get; set; }
-        public string AppointTime { get; set; }
-       
+        public DateTime? AppointmentDate { get; set; }
+
+        public string AppointmentTime
+        {
+            get
+            {
+                return calender.WorkStartTime.Value.ToString("hh:mm tt") + "-" + calender.WorkEndTime.Value.ToString("hh:mm tt");
+            }
+        }
+
+
         public AppointmentStatus Status { get; set; }
    
         public Customer customer { get; set; }
         public BeautySalon salon { get; set; }
         public Barber barber { get; set; }
         public ServiceType serviceType { get; set; }
-        public Calendar calender { get; set; }
+        public CalendarItem calender { get; set; }
 
-      
+
+       
+
+
 
     } 
     public enum AppointmentStatus
