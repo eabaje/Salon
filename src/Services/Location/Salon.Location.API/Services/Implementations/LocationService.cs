@@ -129,3 +129,20 @@ namespace Salon.LocationBase.API.Services.Implementations
 //    POW(69.1 * ([startlng] - longitude) * COS(latitude / 57.3), 2)) AS distance
 
 //FROM TableName HAVING distance < 25 ORDER BY distance;
+
+
+
+// select* from(select latitude, longitude, SQRT(POW(69.1 * (latitude - [startlat]), 2) +POW(69.1 * (([startlng] - longitude) * COS(latitude / 57.3)), 2)) AS distance FROM TableName ORDER BY distance) as vt where vt.distance< 25
+
+
+
+//SELECT SalonName, latitude, longitude, 3956 * 2 * 
+//          ASIN(SQRT( POWER(SIN(($origLat - latitude)*pi() / 180 / 2),2)
+//          +COS($origLat * pi() / 180) * COS(latitude * pi() / 180)
+//          * POWER(SIN(($origLon - longitude) * pi() / 180 / 2),2))) 
+//          as distance FROM $tableName WHERE 
+//          longitude between ($origLon-$dist/cos(radians($origLat))*69) 
+//          and($origLon +$dist / cos(radians($origLat)) * 69)
+//          and latitude between ($origLat-($dist/69)) 
+//          and($origLat + ($dist / 69)) 
+//          having distance< $dist ORDER BY distance limit 100"; 

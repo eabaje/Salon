@@ -16,6 +16,8 @@ namespace Salon.BarberShopBase.Core.Entities
         //[BsonRepresentation(BsonType.ObjectId)]
         public Guid BeautySalonId { get; set; }
         public string SalonName { get; set; }
+
+        public string Address { get; set; }
         public string Email { get; set; }
 
         public string ContactName { get; set; }

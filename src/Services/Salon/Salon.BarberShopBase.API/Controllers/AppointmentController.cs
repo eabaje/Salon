@@ -132,7 +132,7 @@ namespace Salon.BarberShopBase.API.Controllers
                 try
                 {
 
-
+                // As appointment is made check workdayformat -Allweek,Weekday,weekEnd,Saturday,Sunday
 
                     await _repository.Create(appointment);
 
