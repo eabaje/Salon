@@ -34,5 +34,13 @@ namespace Salon.WebUI.Models
 
         public IEnumerable<Favorite> favorites { get; set; }
 
+
+        public Customer customer { get; set; }
+
+        public IEnumerable<Customer> customers { get; set; }
+
+        public PriceList pricelist { get; set; }
+
+        public IEnumerable<PriceList> pricelists { get; set; }
     }
 }

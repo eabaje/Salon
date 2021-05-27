@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Salon.WebUI.Models.CalendarItem>
+
+@{
+    ViewData["Title"] = "ViewCalendarItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ViewCalendarItem</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CalenderItemId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalenderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkDayStyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkStartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DurationInMinutes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkEndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalonId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalenderItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalenderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkDayStyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkStartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DurationInMinutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkEndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalonId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BarberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

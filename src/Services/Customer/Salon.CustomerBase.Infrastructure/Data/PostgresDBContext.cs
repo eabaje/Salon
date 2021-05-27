@@ -18,6 +18,7 @@ namespace Salon.CustomerBase.Infrastructure.Data
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
 
+        public DbSet<Rating> Ratings { get; set; }
         public DbSet<SalonChoice> SalonChoices { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {

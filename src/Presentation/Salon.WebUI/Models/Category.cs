@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Salon.WebUI.Models
+{ 
     public class Category 
     {
         // [Key]

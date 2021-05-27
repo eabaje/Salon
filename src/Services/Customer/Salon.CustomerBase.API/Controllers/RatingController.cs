@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Salon.CustomerBase.Core.Entities;
 using Salon.CustomerBase.Infrastructure.Repositories.Interfaces;
@@ -8,34 +9,33 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-
-
 namespace Salon.CustomerBase.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class BookingController : ControllerBase
+    public class RatingController : Controller
     {
-        private readonly IBookingRepository _repository;
-        private readonly ILogger<BookingController> _logger;
+        // GET: RatingController
+        private readonly IRatingRepository _repository;
+        private readonly ILogger<RatingController> _logger;
 
-        public BookingController(IBookingRepository repository, ILogger<BookingController> logger)
+        public RatingController(IRatingRepository repository, ILogger<RatingController> logger)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
 
-
         // GET: api/<BarberController>
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Booking>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Booking>>> GetBooking()
+        [ProducesResponseType(typeof(IEnumerable<Rating>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Rating>>> GetRating()
         {
-            try { 
-            var booking = await _repository.GetBooking();
-            return Ok(booking);
+            try
+            {
+                var Rating = await _repository.GetRatings();
+                return Ok(Rating);
 
             }
             catch (Exception exc)
@@ -51,11 +51,12 @@ namespace Salon.CustomerBase.API.Controllers
 
         // GET api/<BarberController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Booking>> GetBooking(string id)
+        public async Task<ActionResult<Rating>> GetRating(string id)
         {
-            try { 
-            var booking = await _repository.GetBookingById(id);
-            return Ok(booking);
+            try
+            {
+                var Rating = await _repository.GetRatingById(id);
+                return Ok(Rating);
 
             }
             catch (Exception exc)
@@ -67,11 +68,12 @@ namespace Salon.CustomerBase.API.Controllers
         }
 
         [HttpGet("{salonId}")]
-        public async Task<ActionResult<IEnumerable<Booking>>> GetBookingByCustomerSalon(string salonId,string customerId)
+        public async Task<ActionResult<IEnumerable<Rating>>> GetRatingsByCustomerSalon(string salonId, string customerId)
         {
-            try { 
-            var booking = await _repository.GetBookingByCustomerSalon(salonId,customerId);
-            return Ok(booking);
+            try
+            {
+                var Rating = await _repository.GetRatingsByCustomerSalon(salonId, customerId);
+                return Ok(Rating);
 
             }
             catch (Exception exc)
@@ -83,32 +85,34 @@ namespace Salon.CustomerBase.API.Controllers
         }
 
         [HttpGet("{salonId}")]
-        public async Task<ActionResult<IEnumerable<Booking>>> GetBookingBySalon(string salonId)
+        public async Task<ActionResult<IEnumerable<Rating>>> GetRatingBySalon(string salonId)
         {
 
-            try { 
-            var booking = await _repository.GetBookingBySalon(salonId);
-            return Ok(booking);
+            try
+            {
+                var Rating = await _repository.GetRatingsBySalon(salonId);
+                return Ok(Rating);
 
-        }
+            }
             catch (Exception exc)
             {
                 _logger.LogError($"Error: {exc}");
                 // transaction.Rollback();
                 return NotFound();
-    }
-}
+            }
+        }
         // POST api/<BarberController>
         [HttpPost]
-        public async Task<ActionResult<Booking>> CreateBooking([FromBody] Booking Booking)
+        public async Task<ActionResult<Rating>> CreateRating([FromBody] Rating Rating)
         {
-            try {
+            try
+            {
 
-                var result = await _repository.AddBooking(Booking);
+                var result = await _repository.AddRating(Rating);
 
                 if (result) { }
 
-         return Ok();
+                return Ok();
 
 
 
@@ -122,11 +126,12 @@ namespace Salon.CustomerBase.API.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(typeof(Booking), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateBooking([FromBody] Booking Booking)
+        [ProducesResponseType(typeof(Rating), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> UpdateRating([FromBody] Rating Rating)
         {
-            try { 
-            return Ok(await _repository.UpdateBooking(Booking));
+            try
+            {
+                return Ok(await _repository.UpdateRating(Rating));
             }
             catch (Exception exc)
             {
@@ -144,8 +149,9 @@ namespace Salon.CustomerBase.API.Controllers
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Delete(string id)
         {
-            try { 
-            return Ok(await _repository.Delete(id));
+            try
+            {
+                return Ok(await _repository.Delete(id));
             }
             catch (Exception exc)
             {

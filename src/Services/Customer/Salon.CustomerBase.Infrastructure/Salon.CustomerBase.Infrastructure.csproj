@@ -21,6 +21,7 @@
 
   </ItemGroup>
   <ItemGroup>
+   
     <ProjectReference Include="..\Salon.CustomerBase.Core\Salon.CustomerBase.Core.csproj" />
   </ItemGroup>
 </Project>

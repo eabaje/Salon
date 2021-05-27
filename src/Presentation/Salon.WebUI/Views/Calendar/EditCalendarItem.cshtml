@@ -1,0 +1,79 @@
+﻿@model Salon.WebUI.Models.CalendarItem
+
+@{
+    ViewData["Title"] = "EditCalendarItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EditCalendarItem</h1>
+
+<h4>CalendarItem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditCalendarItem">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CalenderItemId" class="control-label"></label>
+                <input asp-for="CalenderItemId" class="form-control" />
+                <span asp-validation-for="CalenderItemId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CalenderId" class="control-label"></label>
+                <input asp-for="CalenderId" class="form-control" />
+                <span asp-validation-for="CalenderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkDayStyle" class="control-label"></label>
+                <input asp-for="WorkDayStyle" class="form-control" />
+                <span asp-validation-for="WorkDayStyle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkStartTime" class="control-label"></label>
+                <input asp-for="WorkStartTime" class="form-control" />
+                <span asp-validation-for="WorkStartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DurationInMinutes" class="control-label"></label>
+                <input asp-for="DurationInMinutes" class="form-control" />
+                <span asp-validation-for="DurationInMinutes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkEndTime" class="control-label"></label>
+                <input asp-for="WorkEndTime" class="form-control" />
+                <span asp-validation-for="WorkEndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment" class="control-label"></label>
+                <input asp-for="Comment" class="form-control" />
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalonId" class="control-label"></label>
+                <input asp-for="SalonId" class="form-control" />
+                <span asp-validation-for="SalonId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarberId" class="control-label"></label>
+                <input asp-for="BarberId" class="form-control" />
+                <span asp-validation-for="BarberId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AppointmentTime" class="control-label"></label>
+                <input asp-for="AppointmentTime" class="form-control" />
+                <span asp-validation-for="AppointmentTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
