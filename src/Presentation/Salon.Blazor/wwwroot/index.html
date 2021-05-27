@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Hipstyle</title>
     <link rel="icon" href="img/favicon.png">
+
+    <link href="manifest.json" rel="manifest" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- animate CSS -->
@@ -29,9 +34,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body ontouchstart="">
     <!--::header part start::-->
-    <app>Loading...</app>
+    <app>
+        <header></header>
+        <main class="container">
+            <div class="loader"></div>
+        </main>
+    </app>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
@@ -41,7 +51,7 @@
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 
-   
+
     <!-- footer part end-->
     <!-- jquery plugins here-->
 
