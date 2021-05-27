@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using MassTransit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Salon.CustomerBase.Core.Entities;
@@ -18,15 +20,21 @@ namespace Salon.CustomerBase.API.Controllers
         // GET: RatingController
         private readonly IRatingRepository _repository;
         private readonly ILogger<RatingController> _logger;
+        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IMapper _mapper;
 
-        public RatingController(IRatingRepository repository, ILogger<RatingController> logger)
+        public RatingController(IRatingRepository repository, ILogger<RatingController> logger, IPublishEndpoint publishEndpoint, IMapper mapper)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
 
         // GET: api/<BarberController>
+
+       
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Rating>), (int)HttpStatusCode.OK)]
@@ -50,12 +58,17 @@ namespace Salon.CustomerBase.API.Controllers
 
 
         // GET api/<BarberController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetRating")]
+        [ProducesResponseType(typeof(Rating), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Rating>> GetRating(string id)
         {
             try
             {
                 var Rating = await _repository.GetRatingById(id);
+                if (Rating == null)
+                {
+                    return BadRequest();
+                }
                 return Ok(Rating);
 
             }
@@ -73,6 +86,10 @@ namespace Salon.CustomerBase.API.Controllers
             try
             {
                 var Rating = await _repository.GetRatingsByCustomerSalon(salonId, customerId);
+                if (Rating == null)
+                {
+                    return BadRequest();
+                }
                 return Ok(Rating);
 
             }
@@ -91,6 +108,10 @@ namespace Salon.CustomerBase.API.Controllers
             try
             {
                 var Rating = await _repository.GetRatingsBySalon(salonId);
+                if (Rating == null)
+                {
+                    return BadRequest();
+                }
                 return Ok(Rating);
 
             }
