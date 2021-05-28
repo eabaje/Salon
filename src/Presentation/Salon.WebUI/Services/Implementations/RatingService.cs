@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Salon.WebUI.Models;
+using Salon.WebUI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Salon.WebUI.Services.Implementations
 {
-   public class RatingService : IRatingModelService
+   public class RatingService : IRatingService
     {
         private readonly HttpClient _client;
 
@@ -20,7 +21,7 @@ namespace Salon.WebUI.Services.Implementations
         }
       
 
-        public async Task<RatingModel> AddRatingModel(RatingModel model)
+        public async Task AddRatingModel(RatingModel model)
         {
            // var response = await _client.PostAsync($"/Catalog", model);
 
@@ -32,17 +33,27 @@ namespace Salon.WebUI.Services.Implementations
             {
                 throw new Exception("Something went wrong when calling api.");
             }
-            return await response.ReadContentAs<RatingModel>();
-           // response.EnsureSuccessStatusCode();
+            //  return await response.ReadContentAs<RatingModel>();
+            
+            response.EnsureSuccessStatusCode();
 
-          
+
 
         }
 
-        public async Task UpdateRatingModel(RatingModel RatingModel)
+        public async Task UpdateRating(RatingModel model)
         {
-            _context.RatingModels.Update(RatingModel);
-            return await _context.SaveChangesAsync() > 0;
+            var orderContent = new StringContent(JsonConvert.SerializeObject(model), System.Text.Encoding.UTF8, "application/json");
+
+            var response = await _client.PutAsync($"/Catalog", orderContent);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+            {
+                throw new Exception("Something went wrong when calling api.");
+            }
+            //  return await response.ReadContentAs<RatingModel>();
+
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task<bool> Delete(string id)

@@ -27,6 +27,81 @@ namespace Salon.WebUI.Infrastructure
 
             public static string GetCustomerbyLocation(string baseUri, string Location) => $"{baseUri}/customer/{Location}";
         }
+
+
+        public static class BeautySalon
+        {
+            public static string AddCustomer(string baseUri) => $"{baseUri}/customer/user";
+            public static string UpdateCustomer(string baseUri) => $"{baseUri}/customer/user";
+
+            public static string GetCustomer(string baseUri, string CustomerId) => $"{baseUri}/customer/{CustomerId}";
+
+            public static string GetCustomerbyLocation(string baseUri, string Location) => $"{baseUri}/customer/{Location}";
+        }
+
+        public static class Barber
+        {
+            public static string AddCustomer(string baseUri) => $"{baseUri}/customer/user";
+            public static string UpdateCustomer(string baseUri) => $"{baseUri}/customer/user";
+
+            public static string GetCustomer(string baseUri, string CustomerId) => $"{baseUri}/customer/{CustomerId}";
+
+            public static string GetCustomerbyLocation(string baseUri, string Location) => $"{baseUri}/customer/{Location}";
+        }
+
+
+        public static class Booking
+        {
+            public static string AddCustomer(string baseUri) => $"{baseUri}/customer/user";
+            public static string UpdateCustomer(string baseUri) => $"{baseUri}/customer/user";
+
+            public static string GetCustomer(string baseUri, string CustomerId) => $"{baseUri}/customer/{CustomerId}";
+
+            public static string GetCustomerbyLocation(string baseUri, string Location) => $"{baseUri}/customer/{Location}";
+        }
+
+        public static class Favorite
+        {
+            public static string AddCustomer(string baseUri) => $"{baseUri}/customer/user";
+            public static string UpdateCustomer(string baseUri) => $"{baseUri}/customer/user";
+
+            public static string GetCustomer(string baseUri, string CustomerId) => $"{baseUri}/customer/{CustomerId}";
+
+            public static string GetCustomerbyLocation(string baseUri, string Location) => $"{baseUri}/customer/{Location}";
+        }
+
+
+        public static class PriceList
+        {
+            public static string AddCustomer(string baseUri) => $"{baseUri}/customer/user";
+            public static string UpdateCustomer(string baseUri) => $"{baseUri}/customer/user";
+
+            public static string GetCustomer(string baseUri, string CustomerId) => $"{baseUri}/customer/{CustomerId}";
+
+            public static string GetCustomerbyLocation(string baseUri, string Location) => $"{baseUri}/customer/{Location}";
+        }
+
+        public static class ServiceType
+        {
+            public static string AddServiceType(string baseUri) => $"{baseUri}/ServiceType/AddServiceType";
+            public static string UpdateServiceType(string baseUri) => $"{baseUri}/ServiceType/EditServiceType";
+
+            public static string GetServiceType(string baseUri, string ServiceTypeId) => $"{baseUri}/ServiceType/{ServiceTypeId}";
+
+            public static string GetServiceTypes(string baseUri) => $"{baseUri}/ServiceType/";
+        }
+
+        public static class Calendar
+        {
+            public static string AddCustomer(string baseUri) => $"{baseUri}/customer/user";
+            public static string UpdateCustomer(string baseUri) => $"{baseUri}/customer/user";
+
+            public static string GetCustomer(string baseUri, string CustomerId) => $"{baseUri}/customer/{CustomerId}";
+
+            public static string GetCustomerbyLocation(string baseUri, string Location) => $"{baseUri}/customer/{Location}";
+        }
+
+
         public static class Basket
         {
             public static string GetBasket(string baseUri, string basketId) => $"{baseUri}/{basketId}";
