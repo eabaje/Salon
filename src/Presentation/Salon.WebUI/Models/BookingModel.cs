@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Salon.WebUI.Models
 {
-    public class Booking
+    public class BookingModel
     {
         
            

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Salon.WebUI.Models
 {
-    public class Calendar
+    public class CalendarModel
     {
        
         public Guid CalenderId { get; set; }
@@ -19,7 +19,7 @@ namespace Salon.WebUI.Models
        
         public string Comment { get; set; }
 
-        public ICollection<CalendarItem> calendarItems { get; set; }
+        public ICollection<CalendarItemModel> calendarItems { get; set; }
     }
    
 }

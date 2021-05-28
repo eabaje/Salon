@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Salon.WebUI.Models
 {
-    public class Barber
+    public class BarberModel
     {
       
         public Guid BarberId { get; set; }

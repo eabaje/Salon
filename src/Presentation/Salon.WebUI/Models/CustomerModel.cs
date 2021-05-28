@@ -3,7 +3,7 @@ using System;
 
 namespace Salon.WebUI.Models
 {
-    public class Customer 
+    public class CustomerModel 
     {
         // [Key]
 

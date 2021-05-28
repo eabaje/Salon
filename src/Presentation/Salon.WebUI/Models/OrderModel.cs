@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Salon.WebUI.Models
 {
-    public class Order 
+    public class OrderModel 
     {
         public string CustomerId { get; set; }
         public decimal TotalPrice { get; set; }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Salon.WebUI.Models
 {
-   public class ServiceType
+   public class ServiceTypeModel
     {
         // [Key]
 

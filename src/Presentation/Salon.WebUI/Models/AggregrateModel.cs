@@ -7,40 +7,45 @@ namespace Salon.WebUI.Models
 {
     public class AggregrateModel
     {
-       public  Appointment appointment { get; set; }
+       public  AppointmentModel appointment { get; set; }
 
-        public IEnumerable<Appointment> appointments { get; set; }
+        public IEnumerable<AppointmentModel> appointments { get; set; }
 
-        public Order order { get; set; }
+        public OrderModel order { get; set; }
 
-        public IEnumerable<Order>orders { get; set; }
-
-
-        public Barber barber { get; set; }
-
-        public IEnumerable<Barber> barbers { get; set; }
+        public IEnumerable<OrderModel>orders { get; set; }
 
 
-        public BeautySalon salon { get; set; }
+        public BarberModel barber { get; set; }
 
-        public IEnumerable<BeautySalon> salons { get; set; }
-
-        public Booking booking { get; set; }
-
-        public IEnumerable<Booking> bookings { get; set; }
+        public IEnumerable<BarberModel> barbers { get; set; }
 
 
-        public Favorite favorite { get; set; }
+        public BeautySalonModel salon { get; set; }
 
-        public IEnumerable<Favorite> favorites { get; set; }
+        public IEnumerable<BeautySalonModel> salons { get; set; }
+
+        public BookingModel booking { get; set; }
+
+        public IEnumerable<BookingModel> bookings { get; set; }
 
 
-        public Customer customer { get; set; }
+        public FavoriteModel favorite { get; set; }
 
-        public IEnumerable<Customer> customers { get; set; }
+        public IEnumerable<FavoriteModel> favorites { get; set; }
 
-        public PriceList pricelist { get; set; }
 
-        public IEnumerable<PriceList> pricelists { get; set; }
+        public CustomerModel customer { get; set; }
+
+        public IEnumerable<CustomerModel> customers { get; set; }
+
+        public PriceListModel pricelist { get; set; }
+
+        public IEnumerable<PriceListModel> pricelists { get; set; }
+
+
+        public RatingModel rating { get; set; }
+
+        public IEnumerable<RatingModel> ratings { get; set; }
     }
 }

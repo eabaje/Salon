@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Salon.WebUI.Models
 {
-    public class CalendarItem
+    public class CalendarItemModel
     {   
         public int CalenderItemId { get; set; }
 

@@ -14,7 +14,7 @@ namespace Salon.CustomerBase.Core.Entities
         public string LastName { get; set; }
         public string FirstName { get; set; }
 
-       
+        [DisplayName("FullName")]
         public string FullName
         {
             get

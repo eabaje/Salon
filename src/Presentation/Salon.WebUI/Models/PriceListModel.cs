@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Salon.WebUI.Models
 {
-    public class PriceList 
+    public class PriceListModel 
     {
         
         public string PriceListId { get; set; }

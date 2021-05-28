@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Salon.WebUI.Models
 {
-    public class Favorite
+    public class FavoriteModel
     {
        
         public Guid FavoriteId { get; set; }

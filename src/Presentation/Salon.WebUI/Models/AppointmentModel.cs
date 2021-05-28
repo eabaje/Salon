@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Salon.WebUI.Models
 {
-    public class Appointment 
+    public class AppointmentModel 
     {
         
         public Guid AppointmentId { get; set; }

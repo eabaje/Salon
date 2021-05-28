@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Salon.WebUI.Models
 {
-   public class BeautySalon
+   public class BeautySalonModel
     {
       
        

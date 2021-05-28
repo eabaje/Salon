@@ -1,0 +1,75 @@
+﻿
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Salon.WebUI.Models;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+namespace Salon.WebUI.Services.Implementations
+{
+   public class RatingService : IRatingModelService
+    {
+        private readonly HttpClient _client;
+
+        public RatingService(HttpClient client, ILogger<RatingService> logger)
+        {
+            _client = client ?? throw new ArgumentNullException(nameof(client));
+        }
+      
+
+        public async Task<RatingModel> AddRatingModel(RatingModel model)
+        {
+           // var response = await _client.PostAsync($"/Catalog", model);
+
+            var orderContent = new StringContent(JsonConvert.SerializeObject(model), System.Text.Encoding.UTF8, "application/json");
+
+            var response = await _client.PostAsync($"/Catalog", orderContent);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+            {
+                throw new Exception("Something went wrong when calling api.");
+            }
+            return await response.ReadContentAs<RatingModel>();
+           // response.EnsureSuccessStatusCode();
+
+          
+
+        }
+
+        public async Task UpdateRatingModel(RatingModel RatingModel)
+        {
+            _context.RatingModels.Update(RatingModel);
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> Delete(string id)
+        {
+            var entity = _context.RatingModels.FirstOrDefault(t => t.RateId == Guid.Parse(id));
+            _context.RatingModels.Remove(entity);
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<RatingModel> GetRatingModelById(string id)
+        {
+            return await _context.RatingModels.FirstOrDefaultAsync(t => t.RateId == Guid.Parse(id));
+        }
+
+        public async Task<List<RatingModel>> GetRatingModels()
+        {
+            return await _context.RatingModels.ToListAsync();
+        }
+
+        public async Task<List<RatingModel>> GetRatingModelsBySalon(string salonId)
+        {
+            return await _context.RatingModels.Where(p => p.SalonId == salonId).OrderByDescending(c => c.CustomerId).ToListAsync();
+        }
+
+        public async Task<List<RatingModel>> GetRatingModelsByCustomerSalon(string salonId, string customerId)
+        {
+            return await _context.RatingModels.Where(p => p.SalonId == salonId && p.CustomerId == customerId).OrderByDescending(c => c.CustomerId).ToListAsync();
+        }
+    }
+}
