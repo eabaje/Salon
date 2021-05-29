@@ -58,9 +58,17 @@ namespace Salon.WebUI.Services.Implementations
 
         public async Task<bool> Delete(string id)
         {
-            var entity = _context.RatingModels.FirstOrDefault(t => t.RateId == Guid.Parse(id));
-            _context.RatingModels.Remove(entity);
-            return await _context.SaveChangesAsync() > 0;
+            var orderContent = new StringContent(JsonConvert.SerializeObject(model), System.Text.Encoding.UTF8, "application/json");
+
+            var response = await _client.PutAsync($"/Catalog", orderContent);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+            {
+                throw new Exception("Something went wrong when calling api.");
+            }
+            //  return await response.ReadContentAs<RatingModel>();
+
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task<RatingModel> GetRatingModelById(string id)
