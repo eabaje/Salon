@@ -12,10 +12,13 @@ namespace Salon.BarberShopBase.Core.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string PriceListId { get; set; }
+        public string Currency { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
         public string SalonId { get; set; }
         public string ServiceTypeId { get; set; }
         public string Description { get; set; }
+
+        public bool IsActive { get; set; } = true;
     }
 }

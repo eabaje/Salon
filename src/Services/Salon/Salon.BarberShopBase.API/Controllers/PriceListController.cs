@@ -66,6 +66,22 @@ namespace Salon.BarberShopBase.API.Controllers
             }
         }
 
+        [HttpGet("{salonid}")]
+        public async Task<ActionResult<IEnumerable<PriceList>>> GetPriceListBySalon(string salonid)
+        {
+            try
+            {
+                var price = await _repository.GetPriceListBySalon(salonid);
+                return Ok(price);
+
+            }
+            catch (Exception exc)
+            {
+                _logger.LogError($"Error: {exc}");
+                // transaction.Rollback();
+                return NotFound();
+            }
+        }
 
         [HttpPost]
         public async Task<ActionResult<PriceList>> CreatePrice([FromBody] PriceList price)

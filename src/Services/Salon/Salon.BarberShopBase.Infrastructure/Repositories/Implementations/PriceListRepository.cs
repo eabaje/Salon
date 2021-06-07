@@ -43,6 +43,22 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Implementations
 
           
         }
+        public async Task<IEnumerable<PriceList>> GetPriceListBySalon(string salonId)
+        {
+            List<PriceList> PriceListList = new List<PriceList>();
+
+            return PriceListList = (_setting.IsMongoDb) ? await _context
+                            .PriceLists
+                            .Find(p => p.SalonId == salonId)
+                             .ToListAsync()
+                            : await _contextPostgres
+                            .PriceLists
+                            .Where(p => p.SalonId == salonId)
+                             .ToListAsync();
+
+
+        }
+
 
         public async Task<PriceList> GetPriceList(string id)
         {

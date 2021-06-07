@@ -10,7 +10,10 @@ namespace Salon.BarberShopBase.Infrastructure.Repositories.Interfaces
     {
 
         Task<IEnumerable<PriceList>> GetPriceList();
+        Task<IEnumerable<PriceList>> GetPriceListBySalon(string salonId);
         Task<PriceList> GetPriceList(string id);
+
+
         Task<bool> Create(PriceList price);
         Task<bool> Update(PriceList price);
         Task<bool> Delete(string id);
