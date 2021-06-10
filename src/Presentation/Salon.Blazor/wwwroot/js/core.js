@@ -7,6 +7,7 @@ if ((".loader").length) {
     });
 }
 
+$('#datepicker').datepicker();
 /* Onpage linkng smooth effect */
 
 $('a[href^="#"]').on('click', function(event) {

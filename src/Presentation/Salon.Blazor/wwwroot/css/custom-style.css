@@ -792,6 +792,144 @@ ul.social-box li {
 }
 
 
+
+/**************** regervation_part css start ****************/
+/* line 2, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part {
+	background-color: #30383b;
+	position: relative;
+	z-index: 1;
+}
+
+	/* line 6, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+	.regervation_part:after {
+		position: absolute;
+		left: 0;
+		top: 0;
+		content: "";
+		width: 40%;
+		height: 100%;
+		background-image: url("../img/reservation_bg.png");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-size: cover;
+	}
+
+@media (max-width: 575px) {
+	/* line 6, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+	.regervation_part:after {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+	/* line 6, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+	.regervation_part:after {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	/* line 6, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+	.regervation_part:after {
+		display: none;
+	}
+}
+
+/* line 29, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part .regerv_btn_iner {
+	display: inline-block;
+	background-color: #f81c1c;
+	color: #fff;
+	font-family: "Roboto", sans-serif;
+	padding: 14.5px 31.5px;
+	margin-top: 8px;
+	margin-left: 6px;
+}
+
+/* line 39, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part .regervation_part_iner input {
+	color: #999 !important;
+}
+
+/* line 42, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part .regervation_part_iner .form-control {
+	background-color: transparent;
+	color: #999 !important;
+	border: 0px solid transparent;
+	border-bottom: 2px solid #a1a5a5;
+	border-radius: 0px;
+	padding: .375rem 0rem;
+	font-size: 14px;
+	font-family: "Rufina", serif;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	height: 40px;
+}
+
+/* line 55, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part .regervation_part_iner textarea.form-control {
+	height: 100px !important;
+	border-bottom: 1px solid #a1a5a5;
+}
+
+/* line 61, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part .regervation_part_iner .time_icon .nice-select:after {
+	border-bottom: 0px solid #999;
+	border-right: 0px solid #999;
+	content: "\e72b";
+	font-family: 'themify';
+	transform: rotate(0deg);
+}
+
+/* line 71, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part .ti-calendar {
+	color: #a1a5a5 !important;
+	font-size: 12px;
+	margin-top: 8px;
+	right: 8px;
+}
+
+/* line 77, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part .nice-select {
+	width: 100%;
+	line-height: 17px;
+}
+
+	/* line 80, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+	.regervation_part .nice-select:after {
+		top: 36%;
+	}
+
+/* line 84, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part .gj-picker {
+	max-width: 300px !important;
+}
+
+/* line 88, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part a:hover {
+	color: #fff !important;
+}
+
+/* line 92, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part .btn_4 {
+	margin-top: 8px;
+	margin-left: 5px;
+}
+
+/* line 96, ../../01 cl html template/New folder/May 2019/173 Hipstyle Barber/Hipstyle Barber template/sass/_regervation_part.scss */
+.regervation_part ::placeholder {
+	color: #999999 !important;
+}
+
+
+
+
+
+
+
+
 /* ========== Responsive Stylings ========== */
 @media (max-width: 991px){
 	.container{
